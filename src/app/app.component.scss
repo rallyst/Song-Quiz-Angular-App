@@ -1,26 +1,14 @@
-.container {
+.background {
   position: relative;
-  height: 100%;
+  min-height: 100vh;
+  width: 100vw;
   background-color: rgba(0, 0, 0, 1);
-  overflow: hidden;
+  
   display: block;
-
+  // padding-top: 90px;
 }
 
-// .container::after {
-//   content: '.';
-//   font-size: 52px;
-//   display: block;
-//   width: 933px;
-//   height: 962px;
-//   position: fixed;
-//   right: 50%;
-//   top: 50%;
-//   background: radial-gradient(farthest-side,rgba(242, 245, 75, .5), transparent) center no-repeat;
-//   animation:pulse 3s linear infinite alternate;
-// }
-
-.container::after {
+.background::after {
   content: '.';
   font-size: 52px;
   display: block;
@@ -33,7 +21,7 @@
   animation:pulse 3s linear infinite alternate;
 }
 
-.container::before {
+.background::before {
   content: '.';
   font-size: 52px;
   display: block;
@@ -45,7 +33,6 @@
   background: radial-gradient(farthest-side,rgba(75, 174, 245, .5), transparent) center no-repeat;
   animation:pulse 3s linear infinite alternate;
 }
-
 
 .bg-lights {
   position: absolute;
@@ -60,18 +47,6 @@
   left: -440px;
   top: -183px;
   background: radial-gradient(farthest-side,rgba(245, 75, 75, .5), transparent) center no-repeat;
-}
-
-.yellow {
-  right: -300px;
-  top: -143px;
-  background: radial-gradient(farthest-side,rgba(242, 245, 75, .5), transparent) center no-repeat;
-}
-
-.blue {
-  left: 285px;
-  bottom: -400px;
-  background: radial-gradient(farthest-side,rgba(75, 174, 245, .5), transparent) center no-repeat;
 }
 
 @keyframes pulse{
