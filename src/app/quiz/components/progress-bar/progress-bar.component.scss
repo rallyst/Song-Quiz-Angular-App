@@ -1,0 +1,41 @@
+.progress {
+  height: 46px;
+  border-bottom: 1px solid #373B62;
+  border-radius: 1px;
+  display: flex;
+  align-items: center;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.scroll-line{
+  background: linear-gradient(270.05deg, rgba(126, 85, 179, 0) 50.48%, #A769C4 64.09%, #A769C4 99.44%), rgba(255, 255, 255, 0.2);
+  top: 0;
+  left: 0;
+  height: 5px;
+  position: absolute;
+  width: 100%;
+  transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  border-radius: 5px;
+}
+
+.progress-list {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  list-style: none;
+  margin: 0;
+}
+
+.progress-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.progress-genre {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 150%;
+}
+
