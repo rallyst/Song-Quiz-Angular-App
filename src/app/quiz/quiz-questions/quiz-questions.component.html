@@ -2,5 +2,11 @@
   <h2>Jazz song</h2>
   <p class="quiz-description">Listen to the audio and guess what song is it from the list</p>
   <app-audio-player></app-audio-player>
+  <ul class="answer-list">
+    <app-answer-card
+      *ngFor="let song of songs"
+      [song]="song">
+    </app-answer-card>
+  </ul>
 </div>
 

@@ -23,63 +23,48 @@ export class AudioPlayerService {
   startplayer() {
     this.player = document.getElementById('music_player');
     this.player.controls = false;
-    // this.player.play();
-    // this.getMinutes();
-    // this.getSeconds();
+    }
+
+    stateChanger(state: any) {
+      this.state === 'pause'
+        ? this.state = 'play'
+        : this.state = 'pause'
+    }
+
+    playMusic(curTime: number) {
+      this.player.currentTime = curTime;
+      this.player.play();
+      this.getCurrentTime();
+
+    }
+
+    getTime(curTime: number) {
+      this.currentTime = curTime;
     }
 
 
-    audioHandler() {
-      // this.getMinutes();
-      // this.getSeconds();
+
+    audioHandler(curTime: number) {
       this.convertedDuration = this.convertDuration(this.player.duration)
       this.durationInSeconds = +(this.player.duration).toFixed(0);
 
       if (this.state === 'pause') {
-        this.pauseAudio()
-        this.state = 'play'
+        this.pauseAudio();
       } else {
-        this.state = 'pause'
-        this.player.play();
-        this.getCurrentTime();
-        // console.log(this.durationTime)
-        // console.log((this.player.duration / 60).toFixed(2))
-        // this.minutes = Math.floor(+this.player.duration / 60)
-        // console.log(this.minutes)
+        this.playMusic(curTime);
       }
+
+      this.stateChanger(this.state);
     }
 
     pauseAudio() {
-      // console.log('pauseAudio')
       this.player.pause();
+
       clearInterval(this.timeCounter)
     }
 
-    // minutes = this.player.duration / 60
-    // stop_aud() {
-    //   this.player.pause();
-    //   this.player.currentTime = 0;
-    // }
-
-    // convertDuration(duration: any | null, result: any) {
-    //   // console.log(duration)
-    //   // this.durationInSeconds = +(duration).toFixed(0);
-
-    //   this.minutes = Math.floor(+this.durationInSeconds / 60);
-    //   this.seconds = Math.floor(+this.durationInSeconds) - (this.minutes * 60);
-
-    //   if (this.minutes < 10) {
-    //     console.log(`0${this.minutes}:${this.seconds}`)
-    //     return this.convertedDuration = `0${this.minutes}:${this.seconds}`
-    //   } else {
-    //     console.log(`${this.minutes}:${this.seconds}`)
-    //     return this.convertedDuration = `${this.minutes}:${this.seconds}`
-    //   }
-
-    // }
 
     convertDuration(duration: any | null) {
-      // console.log(duration)
       duration = +(duration).toFixed(0);
 
       this.minutes = Math.floor(duration / 60);
@@ -87,26 +72,23 @@ export class AudioPlayerService {
       this.seconds = Math.floor(duration) - (this.minutes * 60);
 
       if(this.minutes.toString().length < 2) {
-
         this.minutes = `0${this.minutes}`;
-        // console.log(this.minutes)
       }
 
       if(this.seconds.toString().length < 2) {
         this.seconds = `0${this.seconds}`;
       }
 
-      console.log(`${this.minutes}:${this.seconds}`)
       return `${this.minutes}:${this.seconds}`
     }
 
-    
+
 
 
     getCurrentTime() {
       this.timeCounter = setInterval(() => {
         this.currentTime = Math.round(this.player.currentTime);
-        console.log(this.currentTime)
+        console.log(this.currentTime);
       }, 1000)
     }
   }

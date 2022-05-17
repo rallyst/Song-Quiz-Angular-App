@@ -6,7 +6,6 @@ import {
 import { AudioPlayerService } from '../../audio-player.service';
 
 @Component({
-  // changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-progress',
   templateUrl: './progress.component.html',
   styleUrls: ['./progress.component.scss']
@@ -15,53 +14,45 @@ export class ProgressComponent implements OnInit, DoCheck {
 
   @Input() currentTime: any = '00:00';
 
-  @Input() maxRange: number = 1;
+  @Input() maxRange: number = 30;
   @Input() trackDuration: any = '00:00';
   @Input() rangeValue: number = 0;
 
 
-  time!: any;
-
   constructor(private audioService: AudioPlayerService) { }
 
-  ngOnInit(): void {
-
-  }
-
-
+  ngOnInit(): void {}
 
   ngDoCheck(): void {
-
-    // console.log(this.trackDuration)
       if (!this.trackDuration ) {
         this.trackDuration = '00:00'
-        // console.log(this.trackDuration)
       } else {
         this.trackDuration = this.audioService.convertedDuration;
-        // console.log(this.trackDuration)
       }
 
       this.rangeValue = this.audioService.currentTime;
 
-      this.currentTime = this.audioService.convertDuration(this.audioService.currentTime)
-
-      // console.log(this.audioService.currentTime)
-
       if (!this.audioService.durationInSeconds) return;
 
       this.maxRange = this.audioService.durationInSeconds;
-
+      this.stopper();
   }
 
-
-
-  // timer() {
-  //   this.audioService.convertDuration(this.audioService.currentTime)
-  // }
+  stopper() {
+    if (this.audioService.player.ended) {
+      console.log('end')
+    }
+  }
 
   onChange(val: any) {
-    this.rangeValue = val;
-
+    console.log(this.audioService.player.ended)
+    if (this.audioService.currentTime === 0 || this.audioService.state === 'play') {
+      this.audioService.getTime(val)
+      this.audioService.player.currentTime = val;
+    } else {
+      this.audioService.getTime(val)
+      this.audioService.playMusic(val)
+    }
   }
 
   drawProgressTrack() {

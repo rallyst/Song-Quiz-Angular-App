@@ -1,5 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-// import { AudioPlayerComponent } from '../../audio-player.component';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { AudioPlayerService } from '../../audio-player.service';
 
 @Component({
@@ -7,14 +6,20 @@ import { AudioPlayerService } from '../../audio-player.service';
   templateUrl: './player-button.component.html',
   styleUrls: ['./player-button.component.scss']
 })
-export class PlayerButtonComponent implements OnInit {
-
+export class PlayerButtonComponent implements OnInit, DoCheck {
 
   state = this.audioService.state;
+  currentTime!: number;
 
   constructor(private audioService: AudioPlayerService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
+
+  ngDoCheck() {
+    this.currentTime = this.audioService.currentTime;
+  }
 
   playAudio() {
     if (this.state === 'play') {
@@ -22,6 +27,7 @@ export class PlayerButtonComponent implements OnInit {
     } else {
       this.state = 'play';
     }
-    this.audioService.audioHandler();
+
+    this.audioService.audioHandler(this.currentTime);
   }
 }

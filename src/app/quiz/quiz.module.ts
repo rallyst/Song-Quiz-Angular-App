@@ -13,7 +13,7 @@ import { AudioPlayerModule } from '../audio-player/audio-player.module';
   declarations: [
     QuizComponent,
     ProgressBarComponent,
-    QuizImageComponent,
+    QuizImageComponent
   ],
   imports: [
     CommonModule,
