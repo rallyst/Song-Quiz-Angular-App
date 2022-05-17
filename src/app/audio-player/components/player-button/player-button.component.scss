@@ -1,0 +1,27 @@
+.control-btn {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  width: 47px;
+  height: 47px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, .7);
+
+  .play-btn {
+    width: 10px;
+    height: 14px;
+    transform: translate(0, 10%);
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 1);
+  }
+
+}
+
+
+
+

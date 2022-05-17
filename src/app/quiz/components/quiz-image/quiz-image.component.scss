@@ -1,0 +1,14 @@
+.container {
+  position:  relative;
+}
+
+img {
+  display: block;
+  width: 62%;
+  max-height: 500px;
+  object-fit: cover;
+  object-position: right;
+  right: 0;
+  bottom: -530px;
+  position: absolute;
+}

@@ -36,7 +36,7 @@
 .bg-lights {
   position: absolute;
   width: 933px;
-  height: 962px;
+  height: 100%;
   filter: blur(114px);
   animation:pulse 3s linear infinite alternate;
   background: radial-gradient(farthest-side,rgba(245, 75, 75, .5), transparent) center no-repeat;

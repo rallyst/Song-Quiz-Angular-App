@@ -1,0 +1,14 @@
+<div class="player-body">
+  <input
+  (change)="onChange(range.value)"
+  [ngStyle]="{background: drawProgressTrack()}"
+  #range
+  type="range"
+  id="current-time"
+  step="1" min="0" max="100" value="{{rangeValue}}">
+
+  <div class="duration-block">
+    <div class="current-duration">0:00</div>
+    <div class="total-duration">0:00</div>
+  </div>
+</div>

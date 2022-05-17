@@ -1,0 +1,11 @@
+<button
+  class="control-btn"
+  type="button" (click)="playAudio()"
+  id="play_button">
+    <ng-container *ngIf="state === 'play'">
+      <img class="play-btn" src="../../../assets/play.png" alt="play button">
+    </ng-container>
+    <ng-container *ngIf="state !== 'play'">
+      <img class="play-btn" src="../../../assets/pause140.png" alt="pause button">
+    </ng-container>
+</button>

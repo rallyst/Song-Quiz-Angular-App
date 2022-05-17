@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { QuizQuestionsComponent } from './quiz-questions.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { AudioPlayerModule } from 'src/app/audio-player/audio-player.module';
 
 
 
@@ -9,7 +11,9 @@ import { QuizQuestionsComponent } from './quiz-questions.component';
     QuizQuestionsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule,
+    AudioPlayerModule
   ],
   exports: [
     QuizQuestionsComponent
