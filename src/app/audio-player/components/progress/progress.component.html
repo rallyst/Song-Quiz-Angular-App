@@ -5,10 +5,16 @@
   #range
   type="range"
   id="current-time"
-  step="1" min="0" max="100" value="{{rangeValue}}">
+  step="1" min="0" max="{{maxRange}}" value="{{ rangeValue }}">
 
   <div class="duration-block">
-    <div class="current-duration">0:00</div>
-    <div class="total-duration">0:00</div>
+    <div class="current-duration">{{ currentTime }}</div>
+    <div class="total-duration">{{ trackDuration }}</div>
   </div>
 </div>
+<!-- <div>
+  <label for="name">Hero name: </label>
+  <input id="name" [(ngModel)]="hero.name" placeholder="name">
+</div>
+
+<h2>{{hero.name | uppercase}} Details</h2> -->
