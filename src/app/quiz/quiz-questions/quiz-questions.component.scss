@@ -1,5 +1,5 @@
 .container {
-  margin: 30px 60px 60px;
+  margin-top: 30px;
 
 }
 
@@ -12,5 +12,38 @@
   margin-top: 30px;
   margin-bottom: 0;
   padding: 0;
-  max-width: 500px;
+  // max-width: 500px;
+}
+
+.player-container {
+  height: 114px;
+  background-color: #373B62;
+  border: 1px solid #373B62;
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.control-block {
+  position: relative;
+  width: 114px;
+  height: 114px;
+  background: linear-gradient(148.42deg, #EC1919 -0.53%, #D1C234 28.02%, #D134A5 60.47%, #3734D1 90.32%, #23B632 124.06%);
+
+
+  // z-index: 56;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
+#bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 5px;
+
+  /* Preserve aspet ratio */
+  width: 114px;
+  height: 114px;
 }

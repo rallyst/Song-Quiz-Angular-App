@@ -10,6 +10,7 @@ export class PlayerButtonComponent implements OnInit, DoCheck {
 
   state = this.audioService.state;
   currentTime!: number;
+  
 
   constructor(private audioService: AudioPlayerService) { }
 

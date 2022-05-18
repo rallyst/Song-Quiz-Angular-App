@@ -1,14 +1,18 @@
+:host {
+  // position:  relative;
+}
+
 .container {
-  position:  relative;
+  // position:  relative;
 }
 
 img {
   display: block;
-  width: 62%;
-  max-height: 500px;
+  width: 45%;
+  max-height: 600px;
   object-fit: cover;
   object-position: right;
   right: 0;
-  bottom: -530px;
+  bottom: 0px;
   position: absolute;
 }

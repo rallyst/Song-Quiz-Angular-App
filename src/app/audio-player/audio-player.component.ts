@@ -9,7 +9,7 @@ import { AudioPlayerService } from './audio-player.service';
 })
 export class AudioPlayerComponent implements OnInit {
 
-  song = '../../../assets/Reamonn - Josephine.mp3'
+  song = '../../assets/Reamonn - Josephine.mp3'
 
   currentTime: number = 0;
 
@@ -21,7 +21,7 @@ export class AudioPlayerComponent implements OnInit {
 
   ngOnInit(): void {
     this.audioService.startplayer();
-  
+
     // this.audioService.getSeconds()
   }
 

@@ -6,6 +6,7 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
 import { QuizQuestionsModule } from './quiz-questions/quiz-questions.module';
 import { QuizImageComponent } from './components/quiz-image/quiz-image.component';
 import { AudioPlayerModule } from '../audio-player/audio-player.module';
+import { QuizInfoModule } from './quiz-info/quiz-info.module';
 
 
 
@@ -19,7 +20,8 @@ import { AudioPlayerModule } from '../audio-player/audio-player.module';
     CommonModule,
     SharedModule,
     QuizQuestionsModule,
-    AudioPlayerModule
+    AudioPlayerModule,
+    QuizInfoModule
   ],
   exports: [
     QuizComponent

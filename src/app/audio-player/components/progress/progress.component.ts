@@ -18,6 +18,7 @@ export class ProgressComponent implements OnInit, DoCheck {
   @Input() trackDuration: any = '00:00';
   @Input() rangeValue: number = 0;
 
+  // song = '../../../assets/Reamonn - Josephine.mp3'
 
   constructor(private audioService: AudioPlayerService) { }
 

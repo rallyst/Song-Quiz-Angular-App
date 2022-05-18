@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-button',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ButtonComponent implements OnInit {
 
-  constructor() { }
+  @Input() name = 'start quiz';
+  @Input() routenav!: any;
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  btnClick(route: string) {
+    this.router.navigateByUrl(this.routenav);
+    console.log(route)
+  }
 }

@@ -16,7 +16,10 @@ import { ProgressComponent } from './components/progress/progress.component';
     CommonModule
   ],
   exports: [
-    AudioPlayerComponent
+    AudioPlayerComponent,
+    PlayerButtonComponent,
+    ProgressComponent
+    
   ]
 
 })

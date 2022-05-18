@@ -1,7 +1,13 @@
 :host {
   width: 70%;
   // padding-left: 10px;
+
+  @media screen and (max-width: 1200px) {
+    width: 85%;
+  }
 }
+
+
 
 .player-body {
   margin: 0 auto;
