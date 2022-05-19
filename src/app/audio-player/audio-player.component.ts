@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
+import { QuizComponent } from '../quiz/quiz.component';
+import { QuizService } from '../quiz/quiz.service';
 import { AudioPlayerService } from './audio-player.service';
 
 
@@ -7,9 +9,9 @@ import { AudioPlayerService } from './audio-player.service';
   templateUrl: './audio-player.component.html',
   styleUrls: ['./audio-player.component.scss']
 })
-export class AudioPlayerComponent implements OnInit {
+export class AudioPlayerComponent implements OnInit, OnChanges {
 
-  song = '../../assets/Reamonn - Josephine.mp3'
+  song = this.quizService.getSong();
 
   currentTime: number = 0;
 
@@ -17,12 +19,20 @@ export class AudioPlayerComponent implements OnInit {
   durationTime!: number;
   player!: any;
 
-  constructor(private audioService: AudioPlayerService) { }
+
+  constructor(
+    private audioService: AudioPlayerService,
+    private quizService: QuizService) { }
 
   ngOnInit(): void {
+    this.song = this.quizService.getSong()
+    // console.log('audio: '+this.song)
     this.audioService.startplayer();
 
     // this.audioService.getSeconds()
+  }
+  ngOnChanges() {
+    // console.log(this.song)
   }
 
 }

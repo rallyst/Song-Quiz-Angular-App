@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { QuizService } from '../quiz.service';
 
 @Component({
@@ -9,8 +9,9 @@ import { QuizService } from '../quiz.service';
 export class QuizQuestionsComponent implements OnInit {
 
   song = '../../../assets/Reamonn - Josephine.mp3'
-  songs = this.quizService.songs;
+  // songs = this.quizService.songs;
 
+  songArr = this.quizService.getGenreSongs()
   constructor(private quizService: QuizService) { }
 
   ngOnInit(): void {

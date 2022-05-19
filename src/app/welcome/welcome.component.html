@@ -1,15 +1,20 @@
 <div class="container">
   <app-logo></app-logo>
-  <form class="name-form" action="">
+  <form
+    class="name-form"
+    #nameForm = "ngForm"
+    (ngSubmit) = "onSubmit(nameForm)">
     <h2>Welcome!</h2>
     <label for="name">Please enter your name and let's start our quiz!</label>
     <input
-      id="name"
+      [(ngModel)]="playerName"
+      name="name"
       type="text"
       placeholder="TYPE YOUR NAME HERE..."
       autocomplete="off"
-      maxlength="20">
-      <app-button [routenav]="'/quiz'"></app-button>
+      maxlength="20"
+      required minlength="3">
+      <app-button [disabled]="!nameForm.valid" ></app-button>
   </form>
 </div>
 

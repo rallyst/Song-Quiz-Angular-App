@@ -1,5 +1,7 @@
-<button (click)="btnClick(routenav)"
-type="button">
+<button type="submit"
+[disabled]="disabled"
+>
 {{ name | uppercase }}
   <img src="../../../assets/arrow.svg" alt="arrow">
 </button>
+

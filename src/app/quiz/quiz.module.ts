@@ -7,7 +7,7 @@ import { QuizQuestionsModule } from './quiz-questions/quiz-questions.module';
 import { QuizImageComponent } from './components/quiz-image/quiz-image.component';
 import { AudioPlayerModule } from '../audio-player/audio-player.module';
 import { QuizInfoModule } from './quiz-info/quiz-info.module';
-
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -21,7 +21,8 @@ import { QuizInfoModule } from './quiz-info/quiz-info.module';
     SharedModule,
     QuizQuestionsModule,
     AudioPlayerModule,
-    QuizInfoModule
+    QuizInfoModule,
+    HttpClientModule
   ],
   exports: [
     QuizComponent

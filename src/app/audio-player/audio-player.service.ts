@@ -5,7 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class AudioPlayerService {
 
-  song = '../../assets/Reamonn - Josephine.mp3'
+  // song = '../../assets/Reamonn - Josephine.mp3';
+
+
 
   currentTime: number = 0;
   state = 'play';
@@ -45,6 +47,7 @@ export class AudioPlayerService {
 
 
     audioHandler(curTime: number) {
+     
       this.convertedDuration = this.convertDuration(this.player.duration)
       this.durationInSeconds = +(this.player.duration).toFixed(0);
 

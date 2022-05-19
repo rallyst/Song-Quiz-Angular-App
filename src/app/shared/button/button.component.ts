@@ -9,14 +9,10 @@ import { Router } from '@angular/router';
 export class ButtonComponent implements OnInit {
 
   @Input() name = 'start quiz';
-  @Input() routenav!: any;
+  @Input() disabled!: boolean;
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  btnClick(route: string) {
-    this.router.navigateByUrl(this.routenav);
-    console.log(route)
-  }
 }

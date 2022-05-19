@@ -13,8 +13,9 @@
   </div> -->
   <ul class="answer-list">
     <app-answer-card
-      *ngFor="let song of songs"
-      [song]="song">
+      *ngFor="let song of songArr; let i = index"
+      [song]="song"
+      [cardId]="'0'+ (i + 1)">
     </app-answer-card>
   </ul>
 </div>
