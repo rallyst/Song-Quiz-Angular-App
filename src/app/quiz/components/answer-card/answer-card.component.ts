@@ -11,10 +11,7 @@ export class AnswerCardComponent implements OnInit {
 
   @Input() song!: Song;
   @Input() cardId!: string;
-
-
-  @Input() cheked: any = 'checked';
-
+  @Input() cheked: string = 'checked';
 
   correctAnswerStyle = 'background-color: #3E6441; border-color: #619A65'
   wrongAnswerStyle = 'background-color: #853838; border-color: #B55A5A';
@@ -22,49 +19,40 @@ export class AnswerCardComponent implements OnInit {
   correctBackgroundIcon = "background: #3E6441 url('../../../../assets/check.png') no-repeat 50% 50%";
   wrongBackgroundIcon = "background: #853838 url('../../../../assets/x.png') no-repeat 50% 50%";
 
-
-  gotAnswer: any = this.quizeService.answer;
-
-  constructor(private quizeService: QuizService) { }
+  constructor(
+    private quizService: QuizService) { }
 
   ngOnInit(): void {
   }
 
   onChecked(id: any) {
+    this.quizService.clicked = true;
+    this.quizService.selectedID = this.cardId.replace('0', '');
+
     const targetInput = document.getElementById(id);
+    const answerCard = document.querySelector(`#card-${id}`);
+    const inputLabel = document.querySelector(`#label-${id}`);
 
-    if (this.gotAnswer === false) {
+    this.quizService.selectedTrueID = id
+    targetInput?.setAttribute('checked', 'checked')
+    console.log(this.quizService.selectedTrueID)
 
-      const answerCard = document.querySelector(`#card-${id}`);
-      const inputLabel = document.querySelector(`#label-${id}`)
+    if (id ===  this.quizService.correctId) {
+      this.quizService.correctAnswer = true;
+      this.quizService.gotCorrect();
+      this.quizService.totalScores = this.quizService.pointsPerRound;
+      this.quizService.quizRound = this.quizService.quizRound++;
 
-      if (targetInput?.hasAttribute('checked')) {
+      answerCard?.setAttribute('style', this.correctAnswerStyle);
+      inputLabel?.setAttribute('style', this.correctBackgroundIcon);
+    }
 
-        targetInput?.removeAttribute('checked')
-      } else {
+    if (id !== this.quizService.correctId && this.quizService.correctAnswer === undefined) {
 
-        targetInput?.setAttribute('checked', 'checked')
-      }
+      this.quizService.pointsPerRound--;
 
-      if (id ===  this.quizeService.correctId) {
-        this.quizeService.answer = true;
-
-        answerCard?.setAttribute('style', this.correctAnswerStyle);
-        inputLabel?.setAttribute('style', this.correctBackgroundIcon);
-
-        console.log('Correct')
-      } else {
-        console.log('Wrong')
-        answerCard?.setAttribute('style', this.wrongAnswerStyle);
-        inputLabel?.setAttribute('style', this.wrongBackgroundIcon);
-      }
-
-      console.log(this.gotAnswer)
-    } else {
-
-      this.quizeService.showInfo()
-
+      answerCard?.setAttribute('style', this.wrongAnswerStyle);
+      inputLabel?.setAttribute('style', this.wrongBackgroundIcon);
     }
   }
 }
-

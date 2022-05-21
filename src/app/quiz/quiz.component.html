@@ -10,16 +10,31 @@
     <app-progress-bar></app-progress-bar>
     <div class="grid-container">
       <app-quiz-questions></app-quiz-questions>
-      <!-- <div class="cell cell-1"></div> -->
-      <app-quiz-image class="cell-2"></app-quiz-image>
-      <app-quiz-info class="cell-1"></app-quiz-info>
-      <!-- <div class="cell cell-2">2.</div> -->
+      <app-quiz-image class="union-image" *ngIf="!clicked"></app-quiz-image>
+      <app-quiz-info *ngIf="clicked">
+        <h2 class="song-info">
+          {{ '0' + id }}: {{ song.name }} - {{ song.songTitle }}
+        </h2>
+        <img class="song-image" src="{{ imageUrl }}" alt="">
+        <div class="player-container">
+          <div class="button-container">
+            <app-player-button></app-player-button>
+          </div>
+          <div class="progress-bar">
+            <app-progress></app-progress>
+          </div>
+        </div>
+        <div class="description">
+          <p>{{ song.description }}</p>
+        </div>
+      </app-quiz-info>
     </div>
-
   </main>
   <footer>
-    <app-button [name]="'next question'"></app-button>
+    <app-button
+      [name]="'next question'"
+      [disabled]="!correctAnswer"
+      (click)="nextRound()"
+      ></app-button>
   </footer>
 </div>
-
-

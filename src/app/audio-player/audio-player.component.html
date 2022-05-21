@@ -1,15 +1,12 @@
-
-  <div class="player">
-    <audio id="music_player">
-      <source [src]="song">
-    </audio>
-    <div class="audio-player">
-      <div class="control-block">
-      </div>
-      <app-player-button></app-player-button>
-      <app-progress></app-progress>
-
-    </div>
-
+<div class="player">
+  <audio
+  id="music_player"
+  preload="metadata">
+    <source [src]="song">
+  </audio>
+  <div class="audio-player">
+    <ng-content></ng-content>
+    <app-player-button></app-player-button>
+    <app-progress></app-progress>
   </div>
-
+</div>

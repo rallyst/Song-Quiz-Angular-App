@@ -7,8 +7,7 @@ import { ButtonComponent } from './button/button.component';
 @NgModule({
   declarations: [
     LogoComponent,
-    ButtonComponent,
-
+    ButtonComponent
   ],
   imports: [
     CommonModule

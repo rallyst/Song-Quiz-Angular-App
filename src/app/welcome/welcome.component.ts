@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { QuizService } from '../quiz/quiz.service';
 
@@ -10,11 +9,8 @@ import { QuizService } from '../quiz/quiz.service';
 })
 export class WelcomeComponent implements OnInit {
 
-  // @Input() router
-
   playerName!: string;
 
-  // @Input() routenav: any = '/quiz';
   constructor(
     private router: Router,
     private quizService: QuizService
@@ -23,18 +19,7 @@ export class WelcomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-
-  // saveName() {
-  //   console.log('Name: ' + this.playerName)
-  //   this.quizService.playerName = this.playerName;
-  //   this.router.navigateByUrl('/quiz');
-  // }
-
-
-
   onSubmit(formName: any) {
-    // console.log('Name: ' + this.playerName)
     this.quizService.playerName = this.playerName;
     this.router.navigateByUrl('/quiz');
   }

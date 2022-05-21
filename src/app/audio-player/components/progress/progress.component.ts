@@ -13,12 +13,9 @@ import { AudioPlayerService } from '../../audio-player.service';
 export class ProgressComponent implements OnInit, DoCheck {
 
   @Input() currentTime: any = '00:00';
-
   @Input() maxRange: number = 30;
   @Input() trackDuration: any = '00:00';
   @Input() rangeValue: number = 0;
-
-  // song = '../../../assets/Reamonn - Josephine.mp3'
 
   constructor(private audioService: AudioPlayerService) { }
 
@@ -36,13 +33,6 @@ export class ProgressComponent implements OnInit, DoCheck {
       if (!this.audioService.durationInSeconds) return;
 
       this.maxRange = this.audioService.durationInSeconds;
-      this.stopper();
-  }
-
-  stopper() {
-    if (this.audioService.player.ended) {
-      console.log('end')
-    }
   }
 
   onChange(val: any) {
@@ -59,7 +49,4 @@ export class ProgressComponent implements OnInit, DoCheck {
   drawProgressTrack() {
     return `linear-gradient(270.05deg, rgba(126, 85, 179, 0) ${ 100 - ((100 / this.maxRange) * this.rangeValue) }%, #A769C4 0%, #A769C4 99.44%), #494D77`
   }
-
 }
-
-

@@ -1,11 +1,10 @@
-<li   class="answer-card" id="card-{{ song.id }}">
-  <div class="round"  (click)="onChecked(song.id)">
+<li class="answer-card" id="card-{{ song.id }}">
+  <div class="round" (click)="onChecked(song.id)">
     <input type="checkbox" class="checkbox" id="{{ song.id }}" />
     <label class="checkbox-label" id="label-{{ song.id }}" for="checkbox"></label>
   </div>
   <div class="song-info">
     {{ cardId }}: {{ song.name }} - {{ song.songTitle }}
-
   </div>
 </li>
 

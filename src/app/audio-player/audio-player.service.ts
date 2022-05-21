@@ -5,18 +5,12 @@ import { Injectable } from '@angular/core';
 })
 export class AudioPlayerService {
 
-  // song = '../../assets/Reamonn - Josephine.mp3';
-
-
-
   currentTime: number = 0;
   state = 'play';
   timeCounter!: any
   durationInSeconds!: number;
   player!: any;
-
   convertedDuration!: string;
-
   minutes!: any;
   seconds!: any;
 
@@ -37,17 +31,14 @@ export class AudioPlayerService {
       this.player.currentTime = curTime;
       this.player.play();
       this.getCurrentTime();
-
     }
 
     getTime(curTime: number) {
       this.currentTime = curTime;
     }
 
-
-
     audioHandler(curTime: number) {
-     
+
       this.convertedDuration = this.convertDuration(this.player.duration)
       this.durationInSeconds = +(this.player.duration).toFixed(0);
 
@@ -62,8 +53,7 @@ export class AudioPlayerService {
 
     pauseAudio() {
       this.player.pause();
-
-      clearInterval(this.timeCounter)
+      clearInterval(this.timeCounter);
     }
 
 
@@ -71,7 +61,6 @@ export class AudioPlayerService {
       duration = +(duration).toFixed(0);
 
       this.minutes = Math.floor(duration / 60);
-
       this.seconds = Math.floor(duration) - (this.minutes * 60);
 
       if(this.minutes.toString().length < 2) {
@@ -85,9 +74,6 @@ export class AudioPlayerService {
       return `${this.minutes}:${this.seconds}`
     }
 
-
-
-
     getCurrentTime() {
       this.timeCounter = setInterval(() => {
         this.currentTime = Math.round(this.player.currentTime);
@@ -95,4 +81,3 @@ export class AudioPlayerService {
       }, 1000)
     }
   }
-

@@ -1,38 +1,45 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
-import { AudioPlayerService } from '../audio-player/audio-player.service';
+import { Component, DoCheck, Input,  OnInit } from '@angular/core';
 import { QuizService } from './quiz.service';
+import { Song } from '../quiz/song.model'
 
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.scss']
 })
-export class QuizComponent implements OnInit {
+export class QuizComponent implements OnInit, DoCheck {
 
   playerName = this.quizService.playerName;
   totalScores = this.quizService.totalScores;
+  songsArray = this.quizService.getGenreSongs();
+  selected = +this.quizService.selectedID;
+  round: number = this.quizService.quizRound;
 
+  @Input() correctAnswer = this.quizService.correctAnswer;
+  @Input() clicked = this.quizService.clicked;
+  @Input() selectedID = this.quizService.selectedID;
+  @Input() cardId!: string;
+  @Input() id = this.quizService.selectedID;
+  @Input() song: Song = this.songsArray[this.id];
+  @Input() imageUrl = this.quizService.getImageUrl();
 
-  // correctIndex: number = this.generateNumber(this.quizService.quizData.length)
-
-
-// arrNew: any = []
-  // song: any;
-
-  constructor(
-    private quizService: QuizService,
-  ) {}
+  constructor(private quizService: QuizService) {}
 
   ngOnInit(): void {
-    this.quizService.correctId
-    // this.quizService.answer
-    console.log(this.quizService.correctId)
+    this.selectedID = this.quizService.selectedID
   }
 
-
-  generateRound() {
-
+  ngDoCheck() {
+    this.clicked = this.quizService.clicked;
+    this.correctAnswer = this.quizService.correctAnswer
+    this.totalScores = this.quizService.totalScores;
+    this.selectedID = this.quizService.selectedID;
+    this.imageUrl = this.quizService.getImageUrl();
+    this.id = this.quizService.selectedID;
+    this.song = this.songsArray[this.id - 1];
   }
 
+  nextRound() {
+    this.quizService.nextRound();
+  }
 }

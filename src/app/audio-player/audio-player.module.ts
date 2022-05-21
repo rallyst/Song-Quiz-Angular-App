@@ -4,8 +4,6 @@ import { AudioPlayerComponent } from './audio-player.component';
 import { PlayerButtonComponent } from './components/player-button/player-button.component';
 import { ProgressComponent } from './components/progress/progress.component';
 
-
-
 @NgModule({
   declarations: [
     AudioPlayerComponent,
@@ -19,7 +17,6 @@ import { ProgressComponent } from './components/progress/progress.component';
     AudioPlayerComponent,
     PlayerButtonComponent,
     ProgressComponent
-    
   ]
 
 })
