@@ -9,7 +9,6 @@ import { AudioPlayerModule } from '../audio-player/audio-player.module';
 import { QuizInfoModule } from './quiz-info/quiz-info.module';
 import { HttpClientModule } from '@angular/common/http';
 
-
 @NgModule({
   declarations: [
     QuizComponent,

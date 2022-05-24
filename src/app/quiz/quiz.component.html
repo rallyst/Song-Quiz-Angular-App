@@ -18,7 +18,7 @@
         <img class="song-image" src="{{ imageUrl }}" alt="">
         <div class="player-container">
           <div class="button-container">
-            <app-player-button></app-player-button>
+            <app-player-button [playerID]="'music-player-2'"></app-player-button>
           </div>
           <div class="progress-bar">
             <app-progress></app-progress>
@@ -32,9 +32,9 @@
   </main>
   <footer>
     <app-button
-      [name]="'next question'"
+      [name]="btnName"
       [disabled]="!correctAnswer"
-      (click)="nextRound()"
+      (click)="nextStep()"
       ></app-button>
   </footer>
 </div>

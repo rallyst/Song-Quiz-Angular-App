@@ -1,68 +1,87 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { quizData } from './data';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuizService implements OnInit {
 
-  readonly audioPlaying$ = new BehaviorSubject<string>('');
-
   quizData = quizData;
-
-  constructor(private http: HttpClient) { }
-
   URL: string = 'https://levi9-song-quiz.herokuapp.com/api';
   playerName!: string;
-
-  quizRound = 1;
+  btnName: string = '';
+  quizRound: number = 1;
   totalScores: number = 0;
   pointsPerRound = 3;
 
-  correctIndex: number = this.generateNumber(this.quizData.length - 1)
+  correctIndex: number = this.generateNumber(this.quizData.length - 1);
   correctId = `${this.quizRound}-${this.correctIndex + 1}`;
-  cardsList = document.querySelector('.answer-list');
-
   correctAnswer!: any;
+
   clicked: any;
 
-  answer: any = false;
-
   selectedID: any = 0;
-  selected: any = 0;
-
   selectedTrueID: any;
+
+  refreshSongs$ = new BehaviorSubject<boolean>(true);
+
+  constructor() { }
 
   ngOnInit(){
   }
 
-  gotCorrect() {
-    if (this.correctAnswer) {
-      console.log('GOT CORRECT')
-    }
-
-    else {
-
-    }
+  startGame() {
+    this.totalScores = 0;
+    this.pointsPerRound = 3;
+    this.quizRound = 1;
+    this.correctAnswer = undefined;
+    this.clicked = null;
+    this.correctId = `${this.quizRound}-${this.correctIndex + 1}`;
   }
 
-  nextRound() {
-    console.log("this.nextRound")
+  startNewRound() {
+    this.correctIndex = this.generateNumber(this.quizData.length - 1);
+    this.correctAnswer = undefined;
+    this.pointsPerRound = 3;
+    this.quizRound++;
+    this.correctId = `${this.quizRound}-${this.correctIndex + 1}`;
+    this.clicked = false;
+  }
+
+  getButtonName() {
+    return this.quizRound <= 3
+      ? this.btnName = 'next quiz'
+      : this.btnName = 'See My Score';
+  }
+
+  getSongs(): Observable<any[]> {
+    return of (this.quizData[this.quizRound - 1].data);
   }
 
   generateNumber(length: any) {
     return Math.round(Math.random() * (length - 0) + 0);
   }
 
+  getGenre() {
+    return this.quizData[this.quizRound - 1].genre
+  }
 
   getImageUrl() {
     return `${this.URL}/images/${this.selectedTrueID}.jpg`;
   }
 
-  getSong() {
-    return `${this.URL}/audio/${this.quizRound}-${this.correctIndex + 1}.mp3`
+  getCorrectImageUrl() {
+    return `${this.URL}/images/${this.correctId}.jpg`;
+  }
+
+  getAudioUrl(id: string) {
+    return `${this.URL}/audio/${id}.mp3`;
+  }
+
+  countScores() {
+    this.totalScores += this.pointsPerRound;
+    return this.totalScores;
   }
 
   getGenreSongs() {

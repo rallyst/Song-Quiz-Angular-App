@@ -9,7 +9,6 @@
 }
 
 .scroll-line{
-  background: linear-gradient(270.05deg, rgba(126, 85, 179, 0) 50.48%, #A769C4 64.09%, #A769C4 99.44%), rgba(255, 255, 255, 0.2);
   top: 0;
   left: 0;
   height: 5px;
@@ -28,14 +27,26 @@
   margin: 0;
 }
 
-.progress-icon {
+.progress-icon svg{
   width: 20px;
   height: 20px;
 }
 
 .progress-genre {
-  font-weight: 700;
+  font-weight: 400;
   font-size: 14px;
   line-height: 150%;
+  opacity: .7;
 }
 
+.current-genre {
+  font-weight: 700;
+  color: #fff;
+  opacity: 1;
+}
+
+.previous-genre {
+  font-weight: 700;
+  color: #DCA1F8;
+  opacity: 1;
+}

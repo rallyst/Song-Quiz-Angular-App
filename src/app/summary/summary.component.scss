@@ -37,7 +37,6 @@ img {
   }
 }
 
-
 .summary-block {
   background-color: #1B1D31;
   border-radius: 10px;
@@ -61,5 +60,12 @@ img {
   p {
     opacity: .7;
     margin-top: 1px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  h2{
+    font-size: 24px;
+    line-height: 120%;
   }
 }

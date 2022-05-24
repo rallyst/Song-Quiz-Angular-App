@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { QuizService } from '../quiz/quiz.service';
 
@@ -13,8 +13,7 @@ export class WelcomeComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private quizService: QuizService
-  ) { }
+    private quizService: QuizService) { }
 
   ngOnInit(): void {
   }
@@ -22,6 +21,6 @@ export class WelcomeComponent implements OnInit {
   onSubmit(formName: any) {
     this.quizService.playerName = this.playerName;
     this.router.navigateByUrl('/quiz');
+    this.quizService.getGenre()
   }
 }
-

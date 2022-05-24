@@ -46,3 +46,9 @@
     color: transparent;
   }
 }
+
+@media screen and (max-width: 1200px) {
+  .container{
+    padding: 5px;
+  }
+}

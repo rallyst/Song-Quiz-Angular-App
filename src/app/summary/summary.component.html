@@ -1,7 +1,7 @@
 <div class="container">
   <app-logo></app-logo>
   <div class="score-block">
-    <h2>12</h2>
+    <h2>{{ totalScores }}</h2>
   </div>
   <img src="../../../../assets/Union_2.png" alt="union">
   <div class="summary-block">
@@ -9,6 +9,8 @@
       <h2>{{ name }}, {{ headerMessage }}</h2>
       <p>{{ message }}</p>
     </div>
-    <app-button [name]="'try again'"></app-button>
+    <app-button
+    [name]="'try again'"
+    (click)="startNewGame()"></app-button>
   </div>
 </div>

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { WelcomeModule } from './welcome/welcome.module';
 import { QuizModule } from './quiz/quiz.module';
 import { SummaryModule } from './summary/summary.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SummaryModule } from './summary/summary.module';
     AppRoutingModule,
     WelcomeModule,
     QuizModule,
-    SummaryModule
+    SummaryModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

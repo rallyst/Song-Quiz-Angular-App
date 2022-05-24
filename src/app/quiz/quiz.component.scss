@@ -26,7 +26,7 @@ header {
 
 .song-image {
   width: calc(100% - 2px);
-  height: 374px;
+  max-height: 344px;
   object-fit: cover;
   object-position: 50% 20%;
   border: 1px solid #373B62;
@@ -66,6 +66,8 @@ header {
   color: rgba(255, 255, 255, .7);
   text-align: center;
   line-height: 150%;
+  font-size: 14px;
+  overflow: auto;
 }
 
 main {
@@ -79,15 +81,19 @@ main {
 footer {
   width: 100%;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   margin-top: 10px;
 }
 
 .grid-container {
   max-width: 1680px;
   display: grid;
-  margin: 0 60px 60px;
+  margin: 0 60px 10px;
   grid-column-gap: 60px;
+}
+
+.loader {
+  color: #fff;
 }
 
 @media (min-width: 1200px) {
@@ -97,6 +103,11 @@ footer {
 }
 
 @media screen and (max-width: 1200px) {
+
+  .grid-container {
+    margin: 0 5px;
+  }
+
   .union-image {
     display: none;
   }

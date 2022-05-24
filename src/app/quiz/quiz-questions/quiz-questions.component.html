@@ -1,14 +1,18 @@
 <div class="container">
-  <h2>Jazz song</h2>
+  <h2>{{ genre }} song</h2>
   <p class="quiz-description">Listen to the audio and guess what song is it from the list</p>
-  <app-audio-player>
-    <div class="control-block" >
-      <img id="bg" *ngIf="clicked" src="{{ imageUrl }}" alt="song image">
+  <app-audio-player >
+    <audio
+      id="music-player-1">
+      <source [src]="song">
+    </audio>
+    <div class="control-block">
+      <img id="bg" *ngIf="correctAnswer" src="{{ imageUrl }}" alt="song image">
     </div>
   </app-audio-player>
   <ul class="answer-list">
     <app-answer-card
-      *ngFor="let song of songsArray; let i = index"
+      *ngFor="let song of songsArray$ | async; let i = index"
       [song]="song"
       [cardId]="'0'+ (i + 1)">
     </app-answer-card>

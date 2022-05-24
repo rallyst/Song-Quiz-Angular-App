@@ -1,4 +1,4 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { Component, DoCheck, Input, OnInit } from '@angular/core';
 import { AudioPlayerService } from '../../audio-player.service';
 
 @Component({
@@ -8,25 +8,27 @@ import { AudioPlayerService } from '../../audio-player.service';
 })
 export class PlayerButtonComponent implements OnInit, DoCheck {
 
-  state = this.audioService.state;
+  state = 'play';
   currentTime!: number;
+
+  @Input() playerID = '';
 
   constructor(private audioService: AudioPlayerService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   ngDoCheck() {
+    this.state = this.audioService.state;
     this.currentTime = this.audioService.currentTime;
   }
 
-  playAudio() {
+  playAudio(id: string) {
     if (this.state === 'play') {
       this.state = 'pause';
     } else {
       this.state = 'play';
     }
 
-    this.audioService.audioHandler(this.currentTime);
+    this.audioService.audioHandler(this.currentTime, this.playerID);
   }
 }

@@ -35,22 +35,19 @@ export class AnswerCardComponent implements OnInit {
 
     this.quizService.selectedTrueID = id
     targetInput?.setAttribute('checked', 'checked')
-    console.log(this.quizService.selectedTrueID)
 
-    if (id ===  this.quizService.correctId) {
+    if (id === this.quizService.correctId) {
+      if (this.quizService.correctAnswer !== true) {
+        this.quizService.countScores();
+      }
+
       this.quizService.correctAnswer = true;
-      this.quizService.gotCorrect();
-      this.quizService.totalScores = this.quizService.pointsPerRound;
-      this.quizService.quizRound = this.quizService.quizRound++;
-
       answerCard?.setAttribute('style', this.correctAnswerStyle);
       inputLabel?.setAttribute('style', this.correctBackgroundIcon);
     }
 
     if (id !== this.quizService.correctId && this.quizService.correctAnswer === undefined) {
-
       this.quizService.pointsPerRound--;
-
       answerCard?.setAttribute('style', this.wrongAnswerStyle);
       inputLabel?.setAttribute('style', this.wrongBackgroundIcon);
     }

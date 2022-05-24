@@ -1,6 +1,6 @@
 <button
   class="control-btn"
-  type="button" (click)="playAudio()"
+  type="button" (click)="playAudio(playerID)"
   id="play_button">
     <ng-container *ngIf="state === 'play'">
       <img class="play-btn" src="../../../assets/play.png" alt="play button">

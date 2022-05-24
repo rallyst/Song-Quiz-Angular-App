@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'Song-Quiz';
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router) {}
 
   ngOnInit() {
     this.router.navigate(['']);
