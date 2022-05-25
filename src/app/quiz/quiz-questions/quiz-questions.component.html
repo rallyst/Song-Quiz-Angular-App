@@ -7,7 +7,7 @@
       <source [src]="song">
     </audio>
     <div class="control-block">
-      <img id="bg" *ngIf="correctAnswer" src="{{ imageUrl }}" alt="song image">
+      <img class="correct-image" *ngIf="correctAnswer" src="{{ imageUrl }}" alt="song image">
     </div>
   </app-audio-player>
   <ul class="answer-list">

@@ -41,10 +41,11 @@ export class AudioPlayerService {
   }
 
   reloadAudio() {
+    this.state = 'play';
     this.pauseAudio();
     this.getTime(0);
     this.loadMusic();
-    this.state = 'play';
+
   }
 
   audioHandler(curTime: number, id: string) {

@@ -3,3 +3,9 @@
   height: 23px;
   background-color: transparent;
 }
+
+@media screen and (max-width: 1660px) {
+  .logo-container img {
+    margin-left: 10px;
+  }
+}

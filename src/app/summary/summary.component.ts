@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AudioPlayerService } from '../audio-player/audio-player.service';
 import { QuizService } from '../quiz/quiz.service';
 
 @Component({
@@ -8,14 +9,15 @@ import { QuizService } from '../quiz/quiz.service';
   styleUrls: ['./summary.component.scss']
 })
 export class SummaryComponent implements OnInit {
- @Input() name = 'Roman';
+  @Input() name = this.quizService.playerName;
   @Input() headerMessage = 'did so great!';
   @Input() totalScores = this.quizService.totalScores;
   @Input() message = `You've got ${ this.totalScores } out of 12 points. You are definetly a music lover!`
 
   constructor(
     private quizService: QuizService,
-    private router: Router) { }
+    private router: Router,
+    private audioService: AudioPlayerService) { }
 
   ngOnInit(): void {
     this.getMessage();
@@ -28,6 +30,7 @@ export class SummaryComponent implements OnInit {
   }
 
   startNewGame() {
+    this.audioService.reloadAudio();
     this.quizService.startGame();
     this.router.navigate(['/quiz']);
   }
