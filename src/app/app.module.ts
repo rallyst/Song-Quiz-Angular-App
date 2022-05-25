@@ -7,6 +7,7 @@ import { WelcomeModule } from './welcome/welcome.module';
 import { QuizModule } from './quiz/quiz.module';
 import { SummaryModule } from './summary/summary.module';
 import { FormsModule } from '@angular/forms';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { FormsModule } from '@angular/forms';
     SummaryModule,
     FormsModule
   ],
-  providers: [],
+  providers: [{
+    provide: LocationStrategy, useClass: HashLocationStrategy
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
