@@ -19,6 +19,8 @@ export class AnswerCardComponent implements OnInit {
   correctBackgroundIcon = "background: #3E6441 url('../../../../assets/check.png') no-repeat 50% 50%";
   wrongBackgroundIcon = "background: #853838 url('../../../../assets/x.png') no-repeat 50% 50%";
 
+  clickedId: string = '';
+
   constructor(
     private quizService: QuizService) { }
 
@@ -46,7 +48,8 @@ export class AnswerCardComponent implements OnInit {
       inputLabel?.setAttribute('style', this.correctBackgroundIcon);
     }
 
-    if (id !== this.quizService.correctId && this.quizService.correctAnswer === undefined) {
+    if (id !== this.quizService.correctId && this.quizService.correctAnswer === undefined && this.clickedId !== id) {
+      this.clickedId = id;
       this.quizService.pointsPerRound--;
       answerCard?.setAttribute('style', this.wrongAnswerStyle);
       inputLabel?.setAttribute('style', this.wrongBackgroundIcon);
